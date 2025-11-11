@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+    --font-poppins: "Poppins", "sans-serif";
+}
+
+@keyframes wave-flow {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-25px); }
+  100% { transform: translateX(0); }
+}
+
+.animate-wave-flow {
+  animation: wave-flow 12s ease-in-out infinite;
+}
+
