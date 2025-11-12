@@ -206,9 +206,14 @@ const Module = () => {
       <footer className="py-10 bg-white shadow-inner border-t border-slate-200">
         <CenterLayout>
           <div className="w-[90%] lg:w-[55%] flex gap-5 items-center justify-between">
-            {id !== "1" && (
+            {Number(id) > 1 && (
               <button
-                onClick={() => navigate(-1)}
+                onClick={() => {
+                  const prevModule = MODULES.find(
+                    (m) => Number(m.id) === Number(module.id) - 1
+                  );
+                  if (prevModule) navigate(`/modules/${prevModule.id}`);
+                }}
                 className="text-[0.95rem] cursor-pointer flex items-center gap-3 border-2 border-green-600 text-green-700 font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:bg-green-600 hover:text-white"
               >
                 <ChevronLeft />
