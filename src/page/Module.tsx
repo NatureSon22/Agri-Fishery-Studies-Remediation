@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import CenterLayout from "../components/CenterLayout";
 import { MODULES, type ModuleType } from "../data/modules";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -11,6 +11,7 @@ import {
   Award,
   Trophy,
   ArrowLeft,
+  ExternalLink,
 } from "lucide-react";
 import { useProgress } from "../store/useProgress";
 
@@ -19,6 +20,7 @@ const Module = () => {
   const [module, setModule] = useState<ModuleType>();
   const navigate = useNavigate();
   const { modules, finishModule } = useProgress();
+  const containerRef = useRef<HTMLElement | null>(null);
 
   const currentModule = modules.find((m) => m.id === Number(id));
   const isFinished = currentModule?.isFinished ?? false;
@@ -53,7 +55,15 @@ const Module = () => {
       const nextModule = MODULES.find(
         (m) => Number(m.id) === Number(module.id) + 1
       );
-      if (nextModule) navigate(`/modules/${nextModule.id}`);
+      if (nextModule) {
+        navigate(`/modules/${nextModule.id}`);
+      }
+      if (containerRef.current) {
+        containerRef.current.scrollTo({
+          top: 0,
+          left: 0,
+        });
+      }
     }
   };
 
@@ -91,7 +101,7 @@ const Module = () => {
       </header>
 
       {/* MAIN CONTENT */}
-      <main className="flex-1 overflow-y-auto py-14">
+      <main className="flex-1 overflow-y-auto py-14" ref={containerRef}>
         <CenterLayout>
           <div className="w-[90%] md:w-[70%] lg:w-[55%] mx-auto space-y-14">
             {/* PRE-TEST SECTION */}
@@ -107,9 +117,16 @@ const Module = () => {
                   Complete this short quiz to check your current knowledge
                   before you start. It’s just to see what you already know!
                 </p>
-                <p className="text-sm text-green-700 italic mt-2">
-                  Embedded Google Form – Pre-Test for Topic {module.id}
-                </p>
+
+                <a
+                  href={module.preTestURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="z-10 cursor-pointer inline-flex items-center gap-2 bg-green-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:bg-green-700 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]"
+                >
+                  <ExternalLink className="size-5" />
+                  Go to Pre-Test
+                </a>
               </div>
             </section>
 
@@ -160,9 +177,16 @@ const Module = () => {
                   what you’ve learned. This helps track your progress and
                   mastery of the topic.
                 </p>
-                <p className="text-sm text-yellow-600 italic mt-2">
-                  Embedded Google Form – Post-Test for Topic {module.id}
-                </p>
+
+                <a
+                  href={module.postTestURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="z-10 cursor-pointer inline-flex items-center gap-2 bg-yellow-500 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:bg-green-700 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]"
+                >
+                  <ExternalLink className="size-5" />
+                  Go to Post-Test
+                </a>
               </div>
             </section>
 

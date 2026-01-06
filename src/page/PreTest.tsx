@@ -5,7 +5,7 @@ import { useProgress } from "../store/useProgress";
 
 const PreTest = () => {
   const navigate = useNavigate();
-  const formLink = "https://forms.gle/example-link";
+  const formLink = "https://forms.gle/E3RyfVays8MKpfHn8";
   const { isPretestFinished, finishPretest } = useProgress();
 
   return (

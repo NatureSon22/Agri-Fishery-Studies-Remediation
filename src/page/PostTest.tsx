@@ -7,7 +7,7 @@ import { useProgress } from "../store/useProgress";
 
 const PostTest = () => {
   const navigate = useNavigate();
-  const formLink = "https://forms.gle/example-posttest-link";
+  const formLink = "https://forms.gle/dc6vy1YQJDhJRWu67";
 
   const { isPostTestFinished, finishPostTest } = useProgress();
 
@@ -31,7 +31,7 @@ const PostTest = () => {
 
   return (
     <div className="relative space-y-10 min-h-screen bg-zinc-100 text-slate-700 font-poppins flex flex-col">
-      {showConfetti && <Confetti recycle={false} numberOfPieces={350} />}
+      {showConfetti && <Confetti recycle={false} numberOfPieces={1000} />}
 
       {/* Header */}
       <div className="shadow bg-white">
