@@ -21,14 +21,14 @@ type ProgressState = {
 export const useProgress = create<ProgressState>()(
   persist(
     (set) => ({
-      isPretestFinished: false,
-      isModulesFinished: false,
-      isPostTestFinished: false,
+      isPretestFinished: true,
+      isModulesFinished: true,
+      isPostTestFinished: true,
       modules: [
-        { id: 1, isFinished: false },
-        { id: 2, isFinished: false },
-        { id: 3, isFinished: false },
-        { id: 4, isFinished: false },
+        { id: 1, isFinished: true },
+        { id: 2, isFinished: true },
+        { id: 3, isFinished: true },
+        { id: 4, isFinished: true },
       ],
 
       finishPretest: () => set({ isPretestFinished: true }),
@@ -36,7 +36,7 @@ export const useProgress = create<ProgressState>()(
       finishModule: (id: number) => {
         set((state) => {
           const updatedModules = state.modules.map((mod) =>
-            mod.id === id ? { ...mod, isFinished: true } : mod
+            mod.id === id ? { ...mod, isFinished: true } : mod,
           );
 
           const allFinished = updatedModules.every((mod) => mod.isFinished);
@@ -65,6 +65,6 @@ export const useProgress = create<ProgressState>()(
     }),
     {
       name: "progress-storage", // name of item in localStorage
-    }
-  )
+    },
+  ),
 );

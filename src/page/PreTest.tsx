@@ -5,7 +5,7 @@ import { useProgress } from "../store/useProgress";
 
 const PreTest = () => {
   const navigate = useNavigate();
-  const formLink = "https://forms.gle/E3RyfVays8MKpfHn8";
+  const formLink = "https://forms.gle/6D1eVVnsCfuJxQAX6";
   const { isPretestFinished, finishPretest } = useProgress();
 
   return (
@@ -38,7 +38,8 @@ const PreTest = () => {
       {/* Test Card Section */}
       <CenterLayout>
         <div className="border border-green-100 rounded-xl shadow-md bg-white w-[90%] md:w-[70%] lg:w-[50%] p-8 lg:py-12 flex flex-col items-center justify-center text-center space-y-6 transition-all duration-300 hover:shadow-green-200">
-          {!isPretestFinished ? (
+          {/* make this false again */}
+          {isPretestFinished ? (
             <>
               <p className="text-lg font-semibold text-green-700">
                 Ready to start your pre-test?
