@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ArrowLeft, ExternalLink, Trophy, Sparkles } from "lucide-react";
 import CenterLayout from "../components/CenterLayout";
 import { useNavigate } from "react-router";
-import Confetti from "react-confetti";
 import { useProgress } from "../store/useProgress";
 
 const PostTest = () => {
@@ -12,7 +11,7 @@ const PostTest = () => {
   const { isPostTestFinished, finishPostTest } = useProgress();
 
   const [completed, setCompleted] = useState(isPostTestFinished);
-  const [showConfetti, setShowConfetti] = useState(false);
+  // const [showConfetti, setShowConfetti] = useState(false);
 
   // useEffect(() => {
   //   if (completed) {
@@ -31,7 +30,7 @@ const PostTest = () => {
 
   return (
     <div className="relative space-y-10 min-h-screen bg-zinc-100 text-slate-700 font-poppins flex flex-col">
-      {showConfetti && <Confetti recycle={false} numberOfPieces={1000} />}
+      {/* {showConfetti && <Confetti recycle={false} numberOfPieces={1000} />} */}
 
       {/* Header */}
       <div className="shadow bg-white">
