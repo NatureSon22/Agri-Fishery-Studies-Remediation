@@ -14,13 +14,13 @@ const PostTest = () => {
   const [completed, setCompleted] = useState(isPostTestFinished);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  useEffect(() => {
-    if (completed) {
-      setShowConfetti(true);
-      const timer = setTimeout(() => setShowConfetti(false), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [completed]);
+  // useEffect(() => {
+  //   if (completed) {
+  //     setShowConfetti(true);
+  //     const timer = setTimeout(() => setShowConfetti(false), 5000);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [completed]);
 
   const handleComplete = () => {
     if (!completed) {
@@ -106,7 +106,7 @@ const PostTest = () => {
       </CenterLayout>
 
       {/* ✅ Congratulations Modal */}
-      {completed && (
+      {/* {completed && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-xl p-10 text-center space-y-4 w-[90%] md:w-[50%] animate-fade-in">
             <Trophy className="size-10 text-yellow-500 mx-auto" />
@@ -125,7 +125,7 @@ const PostTest = () => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
